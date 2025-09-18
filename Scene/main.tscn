@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dppe88ud1bdfo"]
+
+[ext_resource type="Script" path="res://Sripts/WebSocketClient.gd" id="1_p5xbg"]
+
+[node name="Serveur" type="Node2D"]
+
+[node name="WebSocketClient" type="Button" parent="."]
+script = ExtResource("1_p5xbg")
+
+[connection signal="pressed" from="WebSocketClient" to="WebSocketClient" method="_on_pressed"]

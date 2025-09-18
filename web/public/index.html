@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Blind Test 🎵</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="title">Blind Test 🎵</div>
+
+  <div id="container">
+    
+    
+    <div id="login" style="display:none;">
+      <input id="name" placeholder="Entre ton pseudo">
+      <button id="joinBtn">Rejoindre</button>
+    </div>
+
+    <div id="wait" style="display:none;">
+      <h3>Scores</h3>
+      <ul id="scores"></ul>
+    </div>
+
+    <div id="game1" style="display:none;">
+      <input id="name" placeholder="Entre ton pseudo">
+      <button id="joinBtn">Rejoindre</button>
+    </div>
+
+    <div id="game2" style="display:none;">
+      <input id="name" placeholder="Entre ton pseudo">
+      <button id="joinBtn">Rejoindre</button>
+    </div>
+
+    <div id="game3" style="display:none;">
+      <h2 id="question">Réponds vite !</h2>
+      <div id="answers">
+        <button onclick="sendAnswer('A')">A</button>
+        <button onclick="sendAnswer('B')">B</button>
+        <button onclick="sendAnswer('C')">C</button>
+        <button onclick="sendAnswer('D')">D</button>
+      </div>
+      
+      <h3>Scores</h3>
+      <ul id="scores"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
