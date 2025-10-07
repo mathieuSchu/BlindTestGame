@@ -7,4 +7,9 @@
 [node name="WebSocketClient" type="Button" parent="."]
 script = ExtResource("1_p5xbg")
 
+[node name="maincamera" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
 [connection signal="pressed" from="WebSocketClient" to="WebSocketClient" method="_on_pressed"]
