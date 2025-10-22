@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpvi5xjknukbl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ocj5n"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_30nsf"]
+radius = 60.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_qmkur"]
+radius = 60.0
+height = 120.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_uk4cs"]
+a = Vector2(0, 50)
+b = Vector2(0, 600)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bcryp"]
+a = Vector2(0, 600)
+b = Vector2(1000, 600)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jo306"]
+a = Vector2(1000, 600)
+
+[node name="boule test" type="Node2D"]
+
+[node name="boule" type="RigidBody2D" parent="."]
+position = Vector2(100, 150)
+physics_material_override = SubResource("PhysicsMaterial_ocj5n")
+gravity_scale = 0.0
+linear_velocity = Vector2(0, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boule"]
+shape = SubResource("CircleShape2D_30nsf")
+debug_color = Color(0.2356, 0.55024, 0.76, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="boule"]
+mesh = SubResource("SphereMesh_qmkur")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_uk4cs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_bcryp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_jo306")

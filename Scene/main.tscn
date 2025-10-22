@@ -1,15 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://dppe88ud1bdfo"]
+[gd_scene load_steps=3 format=3 uid="uid://dppe88ud1bdfo"]
 
 [ext_resource type="Script" path="res://Sripts/WebSocketClient.gd" id="1_p5xbg"]
+[ext_resource type="PackedScene" uid="uid://ct606nj2uivs" path="res://Scene/background.tscn" id="2_ne3yh"]
 
 [node name="Serveur" type="Node2D"]
 
 [node name="WebSocketClient" type="Button" parent="."]
+visible = false
 script = ExtResource("1_p5xbg")
 
 [node name="maincamera" type="Camera2D" parent="."]
+visible = false
 anchor_mode = 0
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="background" parent="." instance=ExtResource("2_ne3yh")]
+visible = false
+
+[node name="Start-game" type="Button" parent="."]
+visible = false
+offset_left = 273.0
+offset_top = 429.0
+offset_right = 885.0
+offset_bottom = 578.0
+text = "DEMARER"
 
 [connection signal="pressed" from="WebSocketClient" to="WebSocketClient" method="_on_pressed"]
