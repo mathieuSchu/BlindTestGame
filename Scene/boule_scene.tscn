@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bekv1uujp88bw"]
+
+[ext_resource type="Script" uid="uid://bv2do6psmqgkg" path="res://Sripts/boule_scene.gd" id="1_6myqf"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hmims"]
+b = Vector2(800, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6myqf"]
+a = Vector2(800, 0)
+b = Vector2(800, 300)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_nf1ji"]
+a = Vector2(800, 300)
+b = Vector2(0, 300)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_umywm"]
+a = Vector2(0, 300)
+b = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hmims"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 10
+
+[node name="boule_scene" type="Node2D"]
+script = ExtResource("1_6myqf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_hmims")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_6myqf")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_nf1ji")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_umywm")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 800.0
+offset_bottom = 300.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hmims")

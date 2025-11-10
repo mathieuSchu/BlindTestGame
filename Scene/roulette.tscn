@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyiolpp0om2gu"]
+
+[ext_resource type="Script" uid="uid://d0h6su1rvgl27" path="res://Sripts/roulette.gd" id="1_7xhw3"]
+
+[node name="roulette" type="Node2D"]
+script = ExtResource("1_7xhw3")
+
+[node name="Wheel" type="ColorRect" parent="."]
+
+[node name="Pointer" type="Polygon2D" parent="."]
+position = Vector2(0, -205)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-10, 0, 10, 0, 0, 20)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_left = -51.0
+offset_top = 202.0
+offset_right = 36.0
+offset_bottom = 228.0
+
+[connection signal="pressed" from="Button" to="." method="spin2"]

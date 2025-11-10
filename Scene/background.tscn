@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ct606nj2uivs"]
 
 [ext_resource type="Texture2D" uid="uid://c1mcfab53gei2" path="res://Asset/flocon.png" id="1_bhs1o"]
-[ext_resource type="Shader" path="res://Sripts/background.gdshader" id="1_lskqm"]
+[ext_resource type="Shader" uid="uid://hijc64md1fxq" path="res://Sripts/background.gdshader" id="1_lskqm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l0xe1"]
 shader = ExtResource("1_lskqm")

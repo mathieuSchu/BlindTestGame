@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce0c1jrdffx72"]
+
+[ext_resource type="StyleBox" uid="uid://dgdt7nfrve27l" path="res://Style/question_box.tres" id="1_w6bwy"]
+[ext_resource type="PackedScene" uid="uid://bkc87st5fn2d0" path="res://Style/panel_question.tscn" id="2_7xcsv"]
+
+[node name="QuestionA" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 367.0
+offset_top = 66.0
+offset_right = 884.0
+offset_bottom = 171.0
+theme_override_styles/normal = ExtResource("1_w6bwy")
+
+[node name="PanelQuestionA" parent="." instance=ExtResource("2_7xcsv")]
+position = Vector2(224, 230)
+
+[node name="PanelQuestionB" parent="." instance=ExtResource("2_7xcsv")]
+position = Vector2(705, 240)
+
+[node name="PanelQuestionC" parent="." instance=ExtResource("2_7xcsv")]
+position = Vector2(222, 449)
+
+[node name="PanelQuestionD" parent="." instance=ExtResource("2_7xcsv")]
+position = Vector2(698, 440)

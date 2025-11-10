@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmp0cykhtuk86"]
+
+[ext_resource type="Script" uid="uid://ds3njj0t3mfyj" path="res://Sripts/player_boule.gd" id="1_t86dm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3k6x4"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t86dm"]
+radius = 60.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_pc05f"]
+radius = 60.0
+height = 120.0
+
+[node name="player_boule" type="Node2D"]
+script = ExtResource("1_t86dm")
+
+[node name="boule" type="RigidBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_3k6x4")
+gravity_scale = 0.0
+linear_damp_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boule"]
+visible = false
+shape = SubResource("CircleShape2D_t86dm")
+debug_color = Color(0.2356, 0.55024, 0.76, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="boule"]
+mesh = SubResource("SphereMesh_pc05f")
+
+[node name="Name" type="Label" parent="boule"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
