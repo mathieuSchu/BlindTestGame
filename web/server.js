@@ -1,72 +1,180 @@
-// npm install express ws
+// ---------------------------
+//  IMPORTS
+// ---------------------------
 const express = require("express");
 const http = require("http");
 const WebSocket = require("ws");
 
 const app = express();
 const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
 
-// Servir les fichiers web (index.html)
+
+// ---------------------------
+//  SERVEUR WEB → joueurs
+// --------------------------
+const wss_player = new WebSocket.Server({ server });
+// ---------------------------
+//  SERVEUR GODOT → port 8081
+// ---------------------------
+let godot = null;
+const ws_godot = new WebSocket("ws://localhost:8081");
+
+// ---------------------------
+//  ETAT GLOBAL DU JEU
+// ---------------------------
+let GAME_STATE = "lobby"; 
+// lobby  → inscriptions ouvertes
+// locked → inscriptions fermées
+// question → question en cours
+// results → fin de manche
+
+
+
+
+// Connexion au serveur WebSocket de Godot
+ws_godot.on("open", () => {
+    console.log("🎮 Connecté à Godot !");
+    godot = ws_godot;
+});
+
+ws_godot.on("message", msg => {
+    let data = JSON.parse(msg.toString());
+    console.log("📩 Message Godot:", data);
+
+    // ----------- Godot change l'état du jeu -----------
+    if (data.type === "setState") {
+        GAME_STATE = data.state;
+        console.log("🔄 STATE changé par Godot :", GAME_STATE);
+    }
+    // ----------- Godot envoie une question -----------
+    else if (data.type === "question") {
+        broadcastPlayers(data);
+    }
+});
+ws_godot.on("close", () => {
+    console.log("❌ Godot déconnecté");
+});
+ws_godot.on("error", err => {
+    console.log("⚠ Erreur Godot:", err);
+});
+
+// ---------------------------
+//  FICHIERS WEB
+// ---------------------------
 app.use(express.static("public"));
 
-// Liste des clients connectés
-let players = {}; // clientId -> { name, score }
+// ---------------------------
+//  GESTION DES JOUEURS
+// ---------------------------
+let players = {}; // clientId -> { name,icone }
+let sockets = {}; // clientId -> { websocket }
 
-wss.on("connection", (ws,req) => {
-  console.log("✅ Nouveau client connecté");
+wss_player.on("connection", (ws,req) => {
+  console.log("✅ Un joueur s'est connecté");
 
   ws.on("message", (msg) => {
     let data = JSON.parse(msg.toString());
 
-    // Quand un client s'identifie
+    // ------------- IDENTIFICATION -------------
     if (data.type === "identify") {
-      let clientId = data.clientId;
-
-      if (players[clientId]) {
+      let id = data.clientId;
+      sockets[ws] = id;
+      if (players[id]) {
         // Joueur déjà connu → renvoyer ses infos
         ws.send(JSON.stringify({
           type: "restore",
-          player: players[clientId]
+          player: players[id],
+          state : GAME_STATE 
         }));
+        console.log("Joueur reconnu  :",players[id].name);
+        sendToGodot({type: "join",id: data.clientId,player:players[id]});
       } else {
-        // Nouveau joueur → demander le login
+        // Nouveau joueur
+        if (GAME_STATE !== "lobby")
+        {
+            ws.send(JSON.stringify({
+                        type: "cantJoin"
+                    }));
+            console.log("⛔ Nouveau joueur refusé (jeu en cours)");
+        }
+        else{
         ws.send(JSON.stringify({ type: "needLogin" }));
+        console.log("🆕 Nouveau joueur détecté");
+        }
       }
     }
-    // Quand un joueur rejoint avec un pseudo
-    else if (data.type === "join") {
-      players[data.clientId] = { name: data.player, score: 0 };
-      broadcast({ type: "updateScores", scores: players });
+    // ------------- LOGIN -------------
+    else if (data.type === "join") 
+    {
+      if (GAME_STATE !=="lobby")
+      {
+          ws.send(JSON.stringify({
+                        type: "cantJoin"
+                    }));
+          console.log("⛔ Nouveau joueur refusé (jeu en cours)");
+      }
+      else
+      {
+        players[data.clientId] = { name: data.player, icone: data.icone };
+        console.log("📝 Inscription joueur : ",players[data.clientId].name,"; icone : ",players[data.clientId].icone);
+        sendToGodot({type: "join",id: data.clientId,player:players[data.clientId]});
+      }
+      
     }
-    // Quand un joueur répond
+
+    // ------------- RÉPONSE DU JOUEUR -------------
     else if (data.type === "answer") {
-      console.log("🕹", data.player, "→", data.answer);
-      // Exemple : +1 point à chaque réponse (ajuste selon tes règles)
-      players[data.clientId].score++;
-      broadcast({ type: "updateScores", scores: players });
+      let id = data.clientId;
+      let answer = data.answer;
+      let time = data.time;
+      sendToGodot({type: "playerAnswer",id: id,answer: answer,time:time});
+    }
+  });
+
+  ws.on("close", () => {
+    let id = sockets[ws]
+    console.log("🔴 Joueur déconnecté : ",id);
+    if(GAME_STATE === "lobby")
+    {
+      delete players[id]
+      sendToGodot({type: "leave",id: id});
     }
   });
 });
 
-// Fonction broadcast : envoie à tous les clients connectés (dont Godot)
+// ---------------------------
+//  BROADCAST AUX JOUEURS
+// ---------------------------
 function broadcast(obj) {
   let msg = JSON.stringify(obj);
-  wss.clients.forEach((c) => {
-    if (c.readyState === WebSocket.OPEN) c.send(msg);
+  wss_player.clients.forEach(client  => {
+    if (client.readyState === WebSocket.OPEN) client.send(msg);
   });
 }
 
+// ---------------------------
+//  ENVOYER À GODOT
+// ---------------------------
+function sendToGodot(obj) {
+    if (godot && godot.readyState === WebSocket.OPEN) {
+        godot.send(JSON.stringify(obj));
+    } else {
+        console.log("⚠ Impossible d'envoyer à Godot : socket fermée");
+    }
+}
+
+function sendQuestion(questionText, answers) {
+  let msg = {
+    type: "question",
+    answers: answers // tableau ["A", "B", "C", "D"]
+  };
+  broadcast(msg);
+}
+// ---------------------------
+//  LANCER SERVEUR
+// ---------------------------
 const PORT = 3000;
 server.listen(PORT, () => {
   console.log("🚀 Serveur lancé sur http://localhost:" + PORT);
 });
 
-function sendQuestion(questionText, answers) {
-  let msg = {
-    type: "question",
-    text: questionText,
-    answers: answers // tableau ["A", "B", "C", "D"]
-  };
-  broadcast(msg);
-}

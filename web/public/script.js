@@ -31,10 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
       playerName = data.player.name;
       document.getElementById("login").style.display = "none";
       document.getElementById("wait").style.display = "block";
-      updateScores({ [clientId]: data.player });
-    }
-    else if (data.type === "updateScores") {
-      updateScores(data.scores);
     }
     else if (data.type === "question") {
       updateQuestion(data);
@@ -43,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
    // Bouton login
   document.getElementById("joinBtn").addEventListener("click", () => {
     playerName = document.getElementById("name").value || "Anonyme";
-    ws.send(JSON.stringify({ type: "join", clientId: clientId, player: playerName }));
+    ws.send(JSON.stringify({ type: "join", clientId: clientId, player: playerName,icone:0 }));
     document.getElementById("login").style.display = "none";
     document.getElementById("wait").style.display = "block";
   });
@@ -66,14 +62,4 @@ function updateQuestion(data) {
       btns[i].setAttribute("onclick", `sendAnswer('${ans}')`);
     }
   });
-}
-
-function updateScores(scores) {
-  let ul = document.getElementById("scores");
-  ul.innerHTML = "";
-  for (let p in scores) {
-    let li = document.createElement("li");
-    li.textContent = scores[p].name + " : " + scores[p].score;
-    ul.appendChild(li);
-  }
 }
