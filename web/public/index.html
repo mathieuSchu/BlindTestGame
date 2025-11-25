@@ -2,46 +2,47 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Blind Test 🎵</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Blind Test 🎵</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="title">Blind Test 🎵</div>
+
+  <div id="header-display" style="display:none;">
+    <div id="avatar-display">🎤</div>
+    <span id="pseudo-display"></span>
+  </div>
 
   <div id="container">
-    
-    
-    <div id="login" style="display:none;">
+    <div id="login" class="game-state">
+      <div id="title">Blind Test 🎵</div>
+      <h2>Rejoins la partie !</h2>
+
+      <div id="avatar-chooser">
+        <button id="avatar-prev" class="nav-arrow">◀</button>
+        <div id="current-avatar-icon">🎵</div>         <button id="avatar-next" class="nav-arrow">▶</button>
+      </div>
+
       <input id="name" placeholder="Entre ton pseudo">
+
+      <div id="avatar-selection" style="display:none;">
+        <button class="avatar-choice" data-avatar="A">😎</button>
+        <button class="avatar-choice" data-avatar="B">🎵</button>
+        <button class="avatar-choice" data-avatar="C">🎸</button>
+      </div>
+
       <button id="joinBtn">Rejoindre</button>
     </div>
 
-    <div id="wait" style="display:none;">
-      <h3>Scores</h3>
-      <ul id="scores"></ul>
+    <div id="wait" class="game-state" style="display:none;">
+      <h2>En attente des autres joueurs...</h2>
+      <p>La partie va commencer bientôt !</p>
     </div>
 
-    <div id="game1" style="display:none;">
-      <input id="name" placeholder="Entre ton pseudo">
-      <button id="joinBtn">Rejoindre</button>
-    </div>
-
-    <div id="game2" style="display:none;">
-      <input id="name" placeholder="Entre ton pseudo">
-      <button id="joinBtn">Rejoindre</button>
-    </div>
-
-    <div id="game3" style="display:none;">
+    <div id="game3" class="game-state" style="display:none;">
       <h2 id="question">Réponds vite !</h2>
       <div id="answers">
-        <button onclick="sendAnswer('A')">A</button>
-        <button onclick="sendAnswer('B')">B</button>
-        <button onclick="sendAnswer('C')">C</button>
-        <button onclick="sendAnswer('D')">D</button>
       </div>
-      
-      <h3>Scores</h3>
-      <ul id="scores"></ul>
+      <p id="feedback-text"></p>
     </div>
   </div>
 

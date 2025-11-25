@@ -1,87 +1,160 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    color: white;
-    margin: 0;
-    height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a2e; /* Fond sombre pour le jeu */
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 #title {
-    text-align: center;
-    background: rgba(0, 0, 0, 0);
-    color: #d41717;
-    font-size: 60px;
-    padding-top: 60px;
-    width: 100%;
+  font-size: 3.5em;
+  color: #ffeb3b; /* Jaune vif */
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px #000;
 }
 
 #container {
-    flex: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+}
+
+/* --- HEADER D'AFFICHAGE (Avatar/Pseudo) --- */
+
+#header-display {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  width: 100%;
+  justify-content: flex-start;
+  position: sticky; /* Reste en haut */
+  top: 0;
+  background-color: #2e1a47;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+#avatar-display {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffeb3b;
+  color: #1a1a2e;
+  font-size: 20px;
+  line-height: 40px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+#pseudo-display {
+  font-weight: bold;
+  color: #fff;
+}
+
+#avatar-chooser {
     display: flex;
-    padding-bottom: 120px;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 300px;
 }
 
-#login {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 30px;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 400px;
+#current-avatar-icon {
+    font-size: 5em; /* Grande taille pour l'icône */
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 50%;
+    background-color: #ffeb3b;
+    color: #1a1a2e;
+    margin: 0 15px;
+    flex-shrink: 0;
+    font-weight: bold;
 }
 
-#game {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 30px;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 400px;
+.nav-arrow {
+    /* Réinitialiser le style du bouton pour les flèches */
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    font-size: 2em;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.1s;
 }
 
+.nav-arrow:hover {
+    color: #ffeb3b;
+    transform: scale(1.1);
+}
+/* --- Styles des éléments de formulaire et boutons --- */
 
 input {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: none;
-    width: 70%;
+  padding: 15px;
+  margin: 10px 0 20px;
+  border: none;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 300px;
+  font-size: 1.1em;
+  background-color: #3f3f61;
+  color: #fff;
 }
 
 button {
-    margin: 10px;
-    padding: 15px 30px;
-    font-size: 20px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff6b6b; /* Rouge vif pour l'action principale */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
 }
 
-#joinBtn {
-    background: #ff9800;
-    color: white;
+button:hover:not(:disabled) {
+  background-color: #e63946;
+}
+
+/* --- ÉTAT JEU (GAME3) : Disposition des réponses --- */
+
+#answers {
+    display: grid;
+    /* Crée 2 colonnes, s'adapte à la taille de l'écran */
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px;
+    padding: 20px 0;
+    width: 100%;
 }
 
 #answers button {
-    background: #03a9f4;
-    color: white;
+    padding: 30px 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    height: 100px;
+    background-color: #4cc9f0; /* Bleu clair pour les réponses */
 }
 
-button:hover {
-    transform: scale(1.1);
-    opacity: 0.9;
+/* 🔒 Styles de Blocage/Réponse Choisie */
+
+#answers button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: scale(0.98);
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    font-size: 18px;
-    margin: 5px 0;
+#answers button.chosen {
+    background-color: #5cb85c; /* Vert pour le choix de l'utilisateur */
+    border: 4px solid #fff;
+    opacity: 1;
 }

@@ -4,54 +4,53 @@ extends Node
 const PORT = 8081
 
 # Our TCP Server instance.
-var _tcp_server = TCPServer.new()
-
+var tcp_server = TCPServer.new()
+var socket := WebSocketPeer.new()
 # Our connected peers list.
-var _peers: Dictionary = {}
 
 var last_peer_id := 1
 
 
 func _ready():
 	# Start listening on the given port.
-	var err = _tcp_server.listen(PORT)
-	if err == OK:
-		print("Server started.")
-	else:
-		push_error("Unable to start server.")
+	if tcp_server.listen(PORT) != OK:
+		print("Unable to start server.")
 		set_process(false)
 
 
 func _process(_delta):
-	while _tcp_server.is_connection_available():
-		last_peer_id += 1
-		print("+ Peer %d connected." % last_peer_id)
-		var ws = WebSocketPeer.new()
-		ws.accept_stream(_tcp_server.take_connection())
-		_peers[last_peer_id] = ws
-
+	while tcp_server.is_connection_available():
+		print("Connection")
+		var conn: StreamPeerTCP = tcp_server.take_connection()
+		assert(conn != null)
+		socket.accept_stream(conn)
 	# Iterate over all connected peers using "keys()" so we can erase in the loop
-	for peer_id in _peers.keys():
-		var peer = _peers[peer_id]
+	
+	socket.poll()
 
-		peer.poll()
+	var peer_state = socket.get_ready_state()
+	if peer_state == WebSocketPeer.STATE_OPEN:
+		while socket.get_available_packet_count():
+			var data = 	JSON.parse_string(socket.get_packet().get_string_from_ascii())
+			message_recive(data)
+func _exit_tree() -> void:
+	socket.close()
+	tcp_server.stop()
+	
 
-		var peer_state = peer.get_ready_state()
-		if peer_state == WebSocketPeer.STATE_OPEN:
-			while peer.get_available_packet_count():
-				var packet = peer.get_packet()
-				if peer.was_string_packet():
-					var packet_text = packet.get_string_from_utf8()
-					print("< Got text data from peer %d: %s ... echoing" % [peer_id, packet_text])
-					# Echo the packet back.
-					peer.send_text(packet_text)
-				else:
-					print("< Got binary data from peer %d: %d ... echoing" % [peer_id, packet.size()])
-					# Echo the packet back.
-					peer.send(packet)
-		elif peer_state == WebSocketPeer.STATE_CLOSED:
-			# Remove the disconnected peer.
-			_peers.erase(peer_id)
-			var code = peer.get_close_code()
-			var reason = peer.get_close_reason()
-			print("- Peer %s closed with code: %d, reason %s. Clean: %s" % [peer_id, code, reason, code != -1])
+func _on_pressed() -> void:
+	var dic={}
+	dic["type"] = "setState"
+	dic["state"] = "locked"
+	send_massage(dic)
+
+func send_massage(dic:Dictionary) -> void:
+	var json_text = JSON.stringify(dic, "\t")
+	socket.send_text(json_text)
+func message_recive(data)->void:
+	var type = data.type
+	if type == "join":
+		print("Join : ",data.player.name, " id : ",data.id)
+	if type == "leave":
+		print("Leave : ",data.id)
+		
