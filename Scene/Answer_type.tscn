@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdb1khcocsmha"]
+
+[ext_resource type="Script" uid="uid://cwgwka4o1nmsp" path="res://Sripts/answer_type.gd" id="1_5c4m4"]
+[ext_resource type="PackedScene" uid="uid://bkc87st5fn2d0" path="res://Scene/panel_answer.tscn" id="1_y0av4"]
+
+[node name="Answers" type="Node2D"]
+script = ExtResource("1_5c4m4")
+
+[node name="AnswerA" parent="." instance=ExtResource("1_y0av4")]
+visible = false
+position = Vector2(224, 230)
+
+[node name="AnswerB" parent="." instance=ExtResource("1_y0av4")]
+visible = false
+position = Vector2(705, 240)
+
+[node name="AnswerC" parent="." instance=ExtResource("1_y0av4")]
+visible = false
+position = Vector2(222, 449)
+
+[node name="AnswerD" parent="." instance=ExtResource("1_y0av4")]
+visible = false
+position = Vector2(698, 440)

@@ -12,7 +12,6 @@ func _ready():
 
 func _process(_delta):
 	ws.poll()
-
 	# Vérifie si on est connecté
 	if ws.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		# Lire tous les paquets reçus

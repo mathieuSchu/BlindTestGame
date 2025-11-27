@@ -8,15 +8,13 @@
 [node name="Serveur" type="Node2D"]
 script = ExtResource("1_2wwxx")
 
-[node name="WebSocketClient" type="Button" parent="."]
-script = ExtResource("1_p5xbg")
-
 [node name="maincamera" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="background" parent="." instance=ExtResource("2_ne3yh")]
 
 [node name="Start-game" type="Button" parent="."]
+visible = false
 offset_left = 273.0
 offset_top = 429.0
 offset_right = 885.0
@@ -24,7 +22,35 @@ offset_bottom = 578.0
 text = "DEMARER"
 
 [node name="boule_scene" parent="." instance=ExtResource("3_r34rm")]
+visible = false
 position = Vector2(170, 60)
 
-[connection signal="pressed" from="WebSocketClient" to="WebSocketClient" method="_on_pressed"]
+[node name="btm_next" type="Button" parent="."]
+visible = false
+offset_left = 19.0
+offset_top = 582.0
+offset_right = 80.0
+offset_bottom = 613.0
+text = "Next"
+
+[node name="btm_add" type="Button" parent="."]
+visible = false
+offset_left = 17.0
+offset_top = 542.0
+offset_right = 78.0
+offset_bottom = 573.0
+text = "add"
+
+[node name="WebSocketClient" type="Button" parent="."]
+visible = false
+offset_left = 17.0
+offset_top = 483.0
+offset_right = 84.0
+offset_bottom = 532.0
+text = "WEB"
+script = ExtResource("1_p5xbg")
+
 [connection signal="pressed" from="Start-game" to="." method="_on_startgame_pressed"]
+[connection signal="pressed" from="btm_next" to="." method="_on_btm_next_pressed"]
+[connection signal="pressed" from="btm_add" to="." method="_on_btm_add_pressed"]
+[connection signal="pressed" from="WebSocketClient" to="WebSocketClient" method="_on_pressed"]

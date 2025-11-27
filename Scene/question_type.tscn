@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmdvcuw138tpy"]
+
+[ext_resource type="Script" uid="uid://dfhx0goags6tf" path="res://Sripts/question_type.gd" id="1_2vsp7"]
+[ext_resource type="StyleBox" uid="uid://dgdt7nfrve27l" path="res://Style/question_box.tres" id="1_m5qb7"]
+
+[node name="question" type="Node2D"]
+script = ExtResource("1_2vsp7")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -260.0
+offset_top = -55.0
+offset_right = 260.0
+offset_bottom = 55.0
+theme_override_styles/normal = ExtResource("1_m5qb7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+
+[connection signal="finished" from="Audio" to="." method="_on_audio_finished"]

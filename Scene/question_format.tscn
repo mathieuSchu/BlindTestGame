@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce0c1jrdffx72"]
+
+[ext_resource type="PackedScene" uid="uid://bmdvcuw138tpy" path="res://Scene/question_type.tscn" id="1_qoafb"]
+[ext_resource type="PackedScene" uid="uid://cdb1khcocsmha" path="res://Scene/Answer_type.tscn" id="2_qoafb"]
+
+[node name="QuestionA" type="Node2D"]
+
+[node name="Question" parent="." instance=ExtResource("1_qoafb")]
+position = Vector2(625, 64)
+
+[node name="Answers" parent="." instance=ExtResource("2_qoafb")]
