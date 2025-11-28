@@ -1,0 +1,24 @@
+{
+    "type":"QCM",
+    "questions":[
+    {
+        "question":{"text":"Question solo text QCM","image":"","audio":""},
+        "answer":["Vrai","Faux1","Faux2","Faux3"]
+    },
+    {
+        "question":{"text":"Question solo text VF","image":"","audio":""},
+        "answer":["Vrai","Faux"]
+    },
+    {
+        "question":{"text":"Q avec image","image":"noel1.png","audio":""},
+        "answer":["A","B","C","D"]
+    },
+    {
+        "question":{"text":"Q avec son","image":"","audio":"OP1.mp3"},
+        "answer":["A","B"]
+    },
+    {
+        "question":{"text":"Q les 2","image":"noel1.png","audio":"OP1.mp3"},
+        "answer":["A","B","C","D"]
+    }]
+}

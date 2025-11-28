@@ -1,0 +1,13 @@
+{
+    "type":"VF",
+    "questions":[
+    {
+        "question":{"text":"","image":"","audio":""},
+        "answer":["A","B","C"]
+    },
+    {
+        "question":{"text":"","image":"","audio":""},
+        "answer":["A","B","C"]
+    } 
+]
+}
