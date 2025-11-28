@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6ivkdfht1axg"]
+
+[ext_resource type="Script" uid="uid://c848ryw1qw8c8" path="res://Sripts/configuration.gd" id="1_l48uo"]
+
+[node name="Configuration" type="Node2D"]
+script = ExtResource("1_l48uo")
+
+[node name="SB_nb_time" type="SpinBox" parent="."]
+offset_left = -110.0
+offset_top = 100.0
+offset_right = -20.0
+offset_bottom = 131.0
+min_value = 5.0
+max_value = 60.0
+value = 30.0
+
+[node name="Label" type="Label" parent="SB_nb_time"]
+layout_mode = 0
+offset_left = -233.0
+offset_top = 2.0
+offset_bottom = 25.0
+text = "Temps pour les questions [s] : "
+
+[node name="SB_nb_manche" type="SpinBox" parent="."]
+offset_left = -110.0
+offset_right = -20.0
+offset_bottom = 31.0
+min_value = 1.0
+max_value = 10.0
+value = 5.0
+
+[node name="Label" type="Label" parent="SB_nb_manche"]
+layout_mode = 0
+offset_left = -166.0
+offset_top = 2.0
+offset_bottom = 25.0
+text = "Nombre de manche : "
+horizontal_alignment = 2
+
+[node name="SB_nb_question" type="SpinBox" parent="."]
+offset_left = -110.0
+offset_top = 50.0
+offset_right = -20.0
+offset_bottom = 81.0
+min_value = 3.0
+max_value = 50.0
+value = 10.0
+
+[node name="Label" type="Label" parent="SB_nb_question"]
+layout_mode = 0
+offset_left = -175.0
+offset_top = 2.0
+offset_bottom = 25.0
+text = "Nombre de question : "
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_left = 20.0
+offset_right = 350.0
+offset_bottom = 131.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[connection signal="value_changed" from="SB_nb_time" to="." method="_on_sb_nb_time_value_changed"]
+[connection signal="value_changed" from="SB_nb_manche" to="." method="_on_sb_nb_manche_value_changed"]
+[connection signal="value_changed" from="SB_nb_question" to="." method="_on_sb_nb_question_value_changed"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dppe88ud1bdfo"]
+[gd_scene load_steps=6 format=3 uid="uid://dppe88ud1bdfo"]
 
 [ext_resource type="Script" uid="uid://d3b8ojn18uqv8" path="res://Sripts/main.gd" id="1_2wwxx"]
 [ext_resource type="Script" uid="uid://d1gak5ybobq66" path="res://Sripts/WebSocketClient.gd" id="1_p5xbg"]
 [ext_resource type="PackedScene" uid="uid://ct606nj2uivs" path="res://Scene/background.tscn" id="2_ne3yh"]
 [ext_resource type="PackedScene" uid="uid://bekv1uujp88bw" path="res://Scene/boule_scene.tscn" id="3_r34rm"]
+[ext_resource type="PackedScene" uid="uid://b6ivkdfht1axg" path="res://Scene/configuration.tscn" id="5_v2sfb"]
 
 [node name="Serveur" type="Node2D"]
 script = ExtResource("1_2wwxx")
@@ -49,6 +50,10 @@ offset_right = 84.0
 offset_bottom = 532.0
 text = "WEB"
 script = ExtResource("1_p5xbg")
+
+[node name="Configuration" parent="." instance=ExtResource("5_v2sfb")]
+visible = false
+position = Vector2(550, 389)
 
 [connection signal="pressed" from="Start-game" to="." method="_on_startgame_pressed"]
 [connection signal="pressed" from="btm_next" to="." method="_on_btm_next_pressed"]

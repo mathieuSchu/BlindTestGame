@@ -5,6 +5,8 @@ enum State { WAIT,INTRO,CONFIG,CONNECTION,SELECTE,MANCHE,RESULT,FRESULT,END}
 var current_state: State
 var dicso_player:Dictionary
 var id_player_false = 0
+var list_manche : Array
+
 
 class Player :
 	var Name
@@ -88,19 +90,31 @@ func on_enter_wait()->void:
 	var win := get_window()
 	win.size_changed.connect(_on_window_resized)
 	Global.window_size=win.size
+	list_manche =get_json_files(Global.path_queations)
 	update_state(0)	
+	
+	
 func on_enter_intro()->void:
 	print(" Main Intro")
 	update_state(0)
-func on_enter_config()->void:
-	$btm_next.visible=true
 	
+	
+func on_enter_config()->void:
 	print(" Main Config")
+	$btm_next.visible=true
+	$Configuration.show_list_manche(list_manche)
+	$Configuration.visible=true
+	
+	
 func on_enter_connection()->void:
+	$Configuration.set_list_manche(list_manche)
+	$Configuration.free()
 	print(" Main Connection")
 	$btm_add.visible=true
 	$"Start-game".visible=true
 	$boule_scene.visible=true
+	
+	
 func on_enter_selecte()->void:
 	print(" Main Selecte")
 func on_enter_manche()->void:
@@ -127,3 +141,23 @@ func _on_window_resized()->void:
 	Global.window_size=get_window().size
 func _on_startgame_pressed() -> void:
 	pass
+	
+	
+	
+#-------------------------------------------------------------------------------
+#--------------------------  Function  -----------------------------------------
+#-------------------------------------------------------------------------------
+func get_json_files(path:String) -> Array:
+	var result = []
+	var dir := DirAccess.open(path)
+	if dir == null:
+		push_error("Dossier introuvable : " + path)
+		return result
+	dir.list_dir_begin()
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			break
+		if !dir.current_is_dir() and file.ends_with(".json"):
+			result.append(file)
+	return result
