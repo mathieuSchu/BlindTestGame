@@ -10,6 +10,8 @@ extends Node2D
 @onready var ans_c_l :Label= $AnswerC/Answer
 @onready var ans_d_l :Label= $AnswerD/Answer
 
+func _ready() -> void:
+	SignalInt.update_size.connect(update_pos)
 
 func set_style(ans,type):
 	var style
@@ -30,13 +32,13 @@ func set_style(ans,type):
 	
 func set_text(ans,text):
 	if ans==0:
-		ans_a_l.text=text
+		ans_a_l.text="A : "+text
 	elif ans==1:
-		ans_b_l.text=text
+		ans_b_l.text="B : "+text
 	elif ans==2:
-		ans_c_l.text=text
+		ans_c_l.text="C : "+text
 	elif ans==3:
-		ans_d_l.text=text
+		ans_d_l.text="D : "+text
 func update_pos():
 	var w_size = Global.window_size
 	var a_size = ans_a_l.size
@@ -60,3 +62,4 @@ func set_visiblity(ans,visi):
 		ans_c.visible=visi
 	if ans >= 4:
 		ans_d.visible=visi
+		

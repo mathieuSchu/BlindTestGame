@@ -5,7 +5,6 @@ extends Node2D
 var l_size
 var w_size
 var i_size
-var a_size
 
 func set_text(new_text) ->void:
 	l_size=label.size
@@ -28,9 +27,14 @@ func set_audio(path_audio)->void:
 	sound.play()
 	
 func _ready() -> void:
-	#Global.window_size=get_window().size
-	#w_size=Global.window_size
-	pass
+	SignalInt.update_size.connect(update_size)
+	w_size=Global.window_size
+	
 	
 func _on_audio_finished() -> void:
 	sound.play()
+func update_size()->void:
+	w_size=Global.window_size
+	if i_size:
+		image.position=Vector2((w_size.x/2)-(i_size.x/2),label.position.y+l_size.y+w_size.y/40)
+	label.position=Vector2((w_size.x/2)-(l_size.x/2),w_size.y/20)

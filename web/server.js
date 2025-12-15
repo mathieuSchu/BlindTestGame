@@ -24,7 +24,7 @@ const ws_godot = new WebSocket("ws://localhost:8081");
 // ---------------------------
 let GAME_STATE = "lobby"; 
 // lobby  → inscriptions ouvertes
-// locked → inscriptions fermées
+// selection → inscriptions fermées
 // question → question en cours
 // results → fin de manche
 
@@ -45,10 +45,34 @@ ws_godot.on("message", msg => {
     if (data.type === "setState") {
         GAME_STATE = data.state;
         console.log("🔄 STATE changé par Godot :", GAME_STATE);
+        if (GAME_STATE == "end"){
+          server.close;
+          close;
+        }
     }
     // ----------- Godot envoie une question -----------
     else if (data.type === "question") {
-        broadcastPlayers(data);
+        console.log("Question");
+        for (const key of Object.keys(players)) {
+        players[key].personal_state.type= "question";
+        players[key].personal_state.value= data.numChoices;
+        }
+        broadcast(data);
+    }
+    // ----------- Godot demande une selection -----------
+    else if (data.type === "selection"){
+      console.log("Selection");
+      players[data.id].personal_state.type = "selection";
+      players[data.id].personal_state.value= data.numChoices;
+      broadcast(data);
+    }
+    // ----------- Godot demande une atente -----------
+    else if (data.type === "wait"){
+      console.log("wait");
+      for (const key of Object.keys(players)) {
+        players[key].personal_state.type= "wait";
+      }
+      broadcast(data);
     }
 });
 ws_godot.on("close", () => {
@@ -66,8 +90,8 @@ app.use(express.static("public"));
 // ---------------------------
 //  GESTION DES JOUEURS
 // ---------------------------
-let players = {}; // clientId -> { name,icone }
-let sockets = {}; // clientId -> { websocket }
+let players = {}; // clientId -> { name,icone,personal_state{wait,question,selection}}
+let sockets = {}; // websocket -> {clientId  }
 
 wss_player.on("connection", (ws,req) => {
   console.log("✅ Un joueur s'est connecté");
@@ -83,11 +107,10 @@ wss_player.on("connection", (ws,req) => {
         // Joueur déjà connu → renvoyer ses infos
         ws.send(JSON.stringify({
           type: "restore",
-          player: players[id],
-          state : GAME_STATE 
+          player: players[id] 
         }));
-        console.log("Joueur reconnu  :",players[id].name);
-        sendToGodot({type: "join",id: data.clientId,player:players[id]});
+        console.log("Joueur reconnu  :",players[id].name,"Stat",players[id].personal_state.type);
+        //sendToGodot({type: "join",id: data.clientId,player:players[id]});
       } else {
         // Nouveau joueur
         if (GAME_STATE !== "lobby")
@@ -115,7 +138,7 @@ wss_player.on("connection", (ws,req) => {
       }
       else
       {
-        players[data.clientId] = { name: data.player, icone: data.icone };
+        players[data.clientId] = { name: data.player, icone: data.icone , personal_state: {type :"wait",value : 0}};
         console.log("📝 Inscription joueur : ",players[data.clientId].name,"; icone : ",players[data.clientId].icone);
         sendToGodot({type: "join",id: data.clientId,player:players[data.clientId]});
       }
@@ -127,6 +150,8 @@ wss_player.on("connection", (ws,req) => {
       let id = data.clientId;
       let answer = data.answer;
       let time = data.time;
+      players[id].personal_state.type = "wait";
+      console.log("Réponce du joueur ",id,"; réponse : ",answer);
       sendToGodot({type: "playerAnswer",id: id,answer: answer,time:time});
     }
   });

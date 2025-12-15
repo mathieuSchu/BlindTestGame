@@ -1,15 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxtbddw7psaj6"]
+[gd_scene load_steps=4 format=3 uid="uid://dxtbddw7psaj6"]
 
-[ext_resource type="Script" uid="uid://e4btioaum3a3" path="res://Sripts/manche_QCM.gd" id="1_s81j0"]
+[ext_resource type="Script" uid="uid://e4btioaum3a3" path="res://Sripts/manche_QCM.gd" id="1_vr0vx"]
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_s81j0")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr0vx"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5y02d"]
+bg_color = Color(1.68458e-06, 0, 0.540365, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="manche1" type="Node2D"]
+script = ExtResource("1_vr0vx")
 
 [node name="Btn_next" type="Button" parent="."]
+visible = false
 offset_left = 1052.0
 offset_top = 560.0
 offset_right = 1108.0
 offset_bottom = 607.0
 text = "Next"
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 200.0
+offset_top = 18.0
+offset_right = 971.0
+offset_bottom = 48.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vr0vx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5y02d")
+value = 30.0
+show_percentage = false
+
 [connection signal="pressed" from="Btn_next" to="." method="_on_btn_next_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

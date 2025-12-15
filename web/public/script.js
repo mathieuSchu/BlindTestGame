@@ -31,23 +31,42 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     else if (data.type === "restore") {
       playerName = data.player.name;
+      playericoneid = data.player.icone;
+      state=data.player.personal_state.type;
       // TODO: Mettre à jour l'affichage de l'avatar/pseudo si besoin
-      showState("wait");
+      updateHeaderDispay(playerName,playericoneid);
+      if (state == "wait"){
+        showState("wait");
+      }
+      else if (state == "question"){
+        showState("game3");
+        initializeNewRound(data.player.personal_state.value,"Répondez vite");
+      }
+      else if (state == "selection"){
+        showState("game3");
+        initializeNewRound(data.player.personal_state.value,"Selection de la manche");
+      }
     }
     else if (data.type === "question") {
       showState("game3");
-      initializeNewRound(data.numChoices);
+      initializeNewRound(data.numChoices,"Répondez vite");
+    }
+    else if (data.type === "selection") {
+        if(data.id === clientId)
+      showState("game3");
+      initializeNewRound(data.numChoices,"Selection de la manche");
+    }
+    else if (data.type === "wait") {
+      showState("wait");
     }
   };
    // Bouton login
   setupAvatarChooser();
   document.getElementById("joinBtn").addEventListener("click", () => {
-        const headerDisplay = document.getElementById('header-display'); // Référence au header complet
-        const pseudoDisplay = document.getElementById('pseudo-display');
         playerName = document.getElementById("name").value || "Anonyme"; 
         // 🔑 NOUVEAU: Récupérer l'index (ID) de l'avatar choisi
         const selectedIconId = currentAvatarIndex; 
-        const selectedIconText = availableAvatars[currentAvatarIndex];
+        
 
         // 🔑 ENVOI DE L'AVATAR AU SERVEUR (vous envoyez l'index 'icone')
         ws.send(JSON.stringify({ 
@@ -56,15 +75,23 @@ document.addEventListener("DOMContentLoaded", () => {
             player: playerName, 
             icone: selectedIconId 
         })); 
-        
-        // Mettre à jour l'affichage de l'avatar dans le header (pour quand l'état "wait" s'active)
-        pseudoDisplay.textContent = playerName;
-        // L'icône est déjà mise à jour via updateAvatarDisplay()
-        headerDisplay.style.display = 'flex';
+        updateHeaderDispay(playerName,selectedIconId)
         showState("wait");
     });
 
 });
+
+function updateHeaderDispay(playerName,iconeid){
+        const selectedIconText = availableAvatars[iconeid];
+        const headerAvatarDisplay = document.getElementById('avatar-display');
+        const headerDisplay = document.getElementById('header-display'); // Référence au header complet
+        const pseudoDisplay = document.getElementById('pseudo-display');
+        // Mettre à jour l'affichage de l'avatar dans le header (pour quand l'état "wait" s'active)
+        pseudoDisplay.textContent = playerName;
+        // L'icône est déjà mise à jour via updateAvatarDisplay()
+        headerDisplay.style.display = 'flex';
+        headerAvatarDisplay.textContent = selectedIconText; 
+}
 
 
 function showState(state) {
@@ -90,16 +117,16 @@ function sendAnswer(choice) {
   if (ws && ws.readyState === WebSocket.OPEN && !hasAnsweredCurrentQuestion) 
   {
     const reactionTimeMs = Date.now() - questionStartTime;
-    ws.send(JSON.stringify({ type: "answer", clientId: clientId, answer: choice}));
+    ws.send(JSON.stringify({ type: "answer", clientId: clientId, answer: choice,time :0}));
   }
 }
 
-function initializeNewRound(numChoices) {
+function initializeNewRound(numChoices,text_question) {
     // 1. Réinitialise le temps de réponse et le drapeau de blocage
     enableAllAnswers();
 
     // 2. Met à jour le texte de la question (si vous voulez juste un message générique)
-    document.getElementById("question").textContent = "Réponds vite!";
+    document.getElementById("question").textContent = text_question;
 
     const answersContainer = document.getElementById("answers");
     answersContainer.innerHTML = ''; 
@@ -110,7 +137,7 @@ function initializeNewRound(numChoices) {
     // 3. Créer dynamiquement les boutons A, B, C, D
     for (let i = 0; i < numChoices && i < 4; i++) {
         const choiceLetter = choices[i];
-        const choiceId = i + 1; // 1 (A), 2 (B), 3 (C), etc.
+        const choiceId = i; // 0 (A), 1 (B), 2 (C), etc.
 
         const button = document.createElement('button');
         button.textContent = choiceLetter; // Affiche la lettre
@@ -175,3 +202,10 @@ function setupAvatarChooser() {
         updateAvatarDisplay();
     });
 }
+
+document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) {
+        // La page redevient visible → refresh
+        location.reload();
+    }
+});

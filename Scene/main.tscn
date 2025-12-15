@@ -27,20 +27,11 @@ visible = false
 position = Vector2(170, 60)
 
 [node name="btm_next" type="Button" parent="."]
-visible = false
-offset_left = 19.0
-offset_top = 582.0
-offset_right = 80.0
-offset_bottom = 613.0
+offset_left = 20.0
+offset_top = 580.0
+offset_right = 81.0
+offset_bottom = 611.0
 text = "Next"
-
-[node name="btm_add" type="Button" parent="."]
-visible = false
-offset_left = 17.0
-offset_top = 542.0
-offset_right = 78.0
-offset_bottom = 573.0
-text = "add"
 
 [node name="WebSocketClient" type="Button" parent="."]
 visible = false
@@ -57,5 +48,4 @@ position = Vector2(550, 389)
 
 [connection signal="pressed" from="Start-game" to="." method="_on_startgame_pressed"]
 [connection signal="pressed" from="btm_next" to="." method="_on_btm_next_pressed"]
-[connection signal="pressed" from="btm_add" to="." method="_on_btm_add_pressed"]
 [connection signal="pressed" from="WebSocketClient" to="WebSocketClient" method="_on_pressed"]

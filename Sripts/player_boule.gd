@@ -2,8 +2,12 @@ extends Node2D
 @onready var boule  : RigidBody2D = $boule
 @onready var mesh_instance = $boule/MeshInstance2D
 @onready var name_player = $boule/Name
+
+@onready var sprite = $boule/Sprite2D
+
 func _ready() -> void:
-	add_name("Nom Très Long Qui Doit Tenir Dans La Sphère")
+	pass
+
 func add_force(x: float,y:float):
 	var vec=Vector2(x,y)
 	vec=1000*vec
@@ -45,4 +49,21 @@ func _update_label_size():
 			best_size = size
 		name_player.add_theme_font_size_override("font_size", best_size)
   # Centré sur la sphère
+func upadate_icone(icone=0)->void:
+	var path_icone
+	if icone == 0:
+		path_icone="res://Asset/flocon.png"
+	elif  icone == 1:
+		path_icone="res://Asset/icon.svg"
+	elif icone == 2:
+		path_icone="res://Asset/noel3.png"
+	elif icone == 3:
+		path_icone=""
+	var tex : Texture = load(path_icone)
+	sprite.texture=tex
+	var size=tex.get_size()
+	var radius = mesh_instance.mesh.radius if mesh_instance.mesh and mesh_instance.mesh.has_method("get_radius") else 50.0
+	var scale_p=Vector2(radius*2/size.x,radius*2/size.y)
+	sprite.scale=scale_p
+	
 	

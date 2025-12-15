@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmp0cykhtuk86"]
+[gd_scene load_steps=8 format=3 uid="uid://dmp0cykhtuk86"]
 
 [ext_resource type="Script" uid="uid://ds3njj0t3mfyj" path="res://Sripts/player_boule.gd" id="1_t86dm"]
+[ext_resource type="Shader" uid="uid://dep50gcirp0jp" path="res://shader/player_boule.gdshader" id="2_c0ag4"]
+[ext_resource type="Texture2D" uid="uid://baawcxxy252l7" path="res://Asset/icon.svg" id="3_ou6ch"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3k6x4"]
 friction = 0.0
@@ -12,6 +14,10 @@ radius = 60.0
 [sub_resource type="SphereMesh" id="SphereMesh_pc05f"]
 radius = 60.0
 height = 120.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7lpx"]
+shader = ExtResource("2_c0ag4")
+shader_parameter/radius = 64.0
 
 [node name="player_boule" type="Node2D"]
 script = ExtResource("1_t86dm")
@@ -27,7 +33,12 @@ shape = SubResource("CircleShape2D_t86dm")
 debug_color = Color(0.2356, 0.55024, 0.76, 1)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="boule"]
+visible = false
 mesh = SubResource("SphereMesh_pc05f")
+
+[node name="Sprite2D" type="Sprite2D" parent="boule"]
+material = SubResource("ShaderMaterial_v7lpx")
+texture = ExtResource("3_ou6ch")
 
 [node name="Name" type="Label" parent="boule"]
 anchors_preset = 8

@@ -10,13 +10,11 @@ var socket := WebSocketPeer.new()
 
 var last_peer_id := 1
 
-
-func _ready():
-	# Start listening on the given port.
-	if tcp_server.listen(PORT) != OK:
-		print("Unable to start server.")
-		set_process(false)
-
+func _ready() -> void:
+	SignalInt.selection.connect(_emit_selection)
+	SignalInt.state.connect(_emit_global_stat)
+	SignalInt.send_question.connect(_emit_question)
+	SignalInt.wait.connect(_emit_wait)
 
 func _process(_delta):
 	while tcp_server.is_connection_available():
@@ -24,6 +22,7 @@ func _process(_delta):
 		var conn: StreamPeerTCP = tcp_server.take_connection()
 		assert(conn != null)
 		socket.accept_stream(conn)
+		SignalInt.emite("signal_conn",0)
 	# Iterate over all connected peers using "keys()" so we can erase in the loop
 	
 	socket.poll()
@@ -50,7 +49,51 @@ func send_massage(dic:Dictionary) -> void:
 func message_recive(data)->void:
 	var type = data.type
 	if type == "join":
-		print("Join : ",data.player.name, " id : ",data.id)
+		var name = data.player.name
+		var id = data.id
+		SignalInt.emite("signal_join",2,id,data.player)
+		print("Join : ",name, " id : ",id)
 	if type == "leave":
-		print("Leave : ",data.id)
+		var id = data.id
+		SignalInt.emite("signal_leave",1,id)
+		print("Leave : ",id)
+	if type == "playerAnswer":
+		var id = data.id
+		var value = data.answer
+		print("playerAnswer : ",id," ; ",value)
+		if Global.current_state == Global.State.SELECTE:
+			SignalInt.emite("signal_answer_s",1,value)
+		elif Global.current_state == Global.State.MANCHE:
+			SignalInt.emite("signal_answer_q",2,id,value)
 		
+		
+		
+func start_server():
+	# Start listening on the given port.
+	if tcp_server.listen(PORT) != OK:
+		print("Unable to start server.")
+		set_process(false)
+		
+func _emit_selection(id)->void:
+	var data : Dictionary
+	data.type = "selection"
+	data.id = id
+	data.numChoices = 3
+	send_massage(data)
+	
+func _emit_global_stat(state)->void:
+	var data : Dictionary
+	data.type = "setState"
+	data.state = state
+	send_massage(data)
+	
+func _emit_question(nb_ans)->void:
+	var data : Dictionary
+	data.type = "question"
+	data.numChoices = nb_ans
+	send_massage(data)
+	
+func _emit_wait()->void:
+	var data : Dictionary
+	data.type = "wait"
+	send_massage(data)

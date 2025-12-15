@@ -1,0 +1,44 @@
+{
+    "type":"BT",
+    "questions":[
+    {
+        "question":{"text":"Q 1 avec son","image":"","audio":"OP1.mp3"},
+        "answer":"1"
+    },
+    {
+        "question":{"text":"Q 2 avec son","image":"","audio":"OP1.mp3"},
+        "answer":"2"
+    },
+    {
+        "question":{"text":"Q 3 avec son","image":"","audio":"OP1.mp3"},
+        "answer":"3"
+    },
+    {
+        "question":{"text":"Q 4 avec son","image":"","audio":"OP1.mp3"},
+        "answer":"4"
+    },
+    {
+        "question":{"text":"Q 5 avec son","image":"","audio":"OP1.mp3"},
+        "answer":"5"
+    },
+    {
+        "question":{"text":"Q 6 avec son","image":"","audio":"OP1.mp3"},
+        "answer":"6"
+    },
+    {
+        "question":{"text":"Q 7 avec son","image":"","audio":"OP1.mp3"},
+        "answer":"7"
+    },
+    {
+        "question":{"text":"Q 8 avec son","image":"","audio":"OP1.mp3"},
+        "answer":"8"
+    },
+    {
+        "question":{"text":"Q 9 avec son","image":"","audio":"OP1.mp3"},
+        "answer":"9"
+    },
+    {
+        "question":{"text":"Q 10 avec son","image":"","audio":"OP1.mp3"},
+        "answer":"10"
+    }]
+}
