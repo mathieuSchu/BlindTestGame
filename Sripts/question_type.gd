@@ -15,8 +15,9 @@ func set_image(path_image)->void:
 	var textur= load(path_image)
 	image.texture=textur;
 	image.visible=true;
-	i_size=textur.get_size() 
+	i_size=image.size
 	image.position=Vector2((w_size.x/2)-(i_size.x/2),label.position.y+l_size.y+w_size.y/40)
+
 	
 func set_image_v(v)->void:
 	image.visible=v;

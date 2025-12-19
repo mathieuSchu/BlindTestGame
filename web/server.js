@@ -13,11 +13,6 @@ const server = http.createServer(app);
 //  SERVEUR WEB → joueurs
 // --------------------------
 const wss_player = new WebSocket.Server({ server });
-// ---------------------------
-//  SERVEUR GODOT → port 8081
-// ---------------------------
-let godot = null;
-const ws_godot = new WebSocket("ws://localhost:8081");
 
 // ---------------------------
 //  ETAT GLOBAL DU JEU
@@ -28,10 +23,16 @@ let GAME_STATE = "lobby";
 // question → question en cours
 // results → fin de manche
 
+// ---------------------------
+//  SERVEUR GODOT → port 8081
+// ---------------------------
+let godot = null;
+let ws_godot = null;
+
+function connectToGodot() {
+const ws_godot = new WebSocket("ws://localhost:8081");
 
 
-
-// Connexion au serveur WebSocket de Godot
 ws_godot.on("open", () => {
     console.log("🎮 Connecté à Godot !");
     godot = ws_godot;
@@ -46,8 +47,12 @@ ws_godot.on("message", msg => {
         GAME_STATE = data.state;
         console.log("🔄 STATE changé par Godot :", GAME_STATE);
         if (GAME_STATE == "end"){
-          server.close;
-          close;
+          console.log("🛑 Fermeture du serveur demandée par Godot");
+
+          server.close(() => {
+          console.log("✅ Serveur HTTP fermé");
+          process.exit(0);
+          });
         }
     }
     // ----------- Godot envoie une question -----------
@@ -75,12 +80,16 @@ ws_godot.on("message", msg => {
       broadcast(data);
     }
 });
+
 ws_godot.on("close", () => {
     console.log("❌ Godot déconnecté");
 });
+
 ws_godot.on("error", err => {
     console.log("⚠ Erreur Godot:", err);
 });
+
+}
 
 // ---------------------------
 //  FICHIERS WEB
@@ -201,5 +210,7 @@ function sendQuestion(questionText, answers) {
 const PORT = 3000;
 server.listen(PORT, () => {
   console.log("🚀 Serveur lancé sur http://localhost:" + PORT);
+  connectToGodot();
 });
 
+process.stdin.resume();

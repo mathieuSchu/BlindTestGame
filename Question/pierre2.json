@@ -1,0 +1,45 @@
+{
+    "type":"QCM",
+    "questions":[
+    {
+        "question":{"text":"Quelle est le nombre de 4000 m en Suisse ?","image":"","audio":""},
+        "answer":["48","54","60","44"]
+    },
+    {
+        "question":{"text":"Quelle est le sommet le plus haut sommet de Suisse ?","image":"","audio":""},
+        "answer":["la Pointe Dufour","le Mont-Blanc","le Weisshorn","le Grand Combin"]
+    },
+    {
+        "question":{"text":"Quelle est ce sommet ?","image":"castor.jpg","audio":""},
+        "answer":["le Castor","le Aletschhorn","le Breithorn","le Mönch"]
+    },
+    {
+        "question":{"text":"Quelle est ce sommet ?","image":"alphubel.jpg","audio":""},
+        "answer":["Le alphubel","La Jungfrau","Le Piz Bernina","le Bishorn"]
+    },
+    {
+        "question":{"text":"Quelle est ce sommet ?","image":"Cervin.jpg","audio":""},
+        "answer":["le Cervin","le Pollux","la Gross Grünhorn","L'Ober Gabelhorn"]
+    },
+    {
+        "question":{"text":"Quelle est ce sommet ?","image":"allalinhorn.jpg","audio":""},
+        "answer":["L'allalinhorn","La Dent Blanche","le Lenzspitze","le Liskamm"]
+    },
+    {
+        "question":{"text":"Quelle est l'altitide de la Pointe Parrot","image":"","audio":""},
+        "answer":["4432","4139","4491","4314"]
+    },
+    {
+        "question":{"text":"Quelle est l'altitide de la Dirruhorn","image":"","audio":""},
+        "answer":["4035","4199","4479","4554"]
+    },
+    {
+        "question":{"text":"Qui est le plus dure ?","image":"","audio":""},
+        "answer":["Pierre","Cervin","Cervino","Matterhorn"]
+    },
+    {
+        "question":{"text":"Quelle est l'altitide du Hobärghorn","image":"","audio":""},
+        "answer":["4219","4218","4217","4216"]
+    }
+]
+}

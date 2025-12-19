@@ -18,5 +18,11 @@ vertical_alignment = 1
 [node name="Audio" type="AudioStreamPlayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 229.0
+offset_top = 153.0
+offset_right = 990.0
+offset_bottom = 597.0
+expand_mode = 3
+stretch_mode = 5
 
 [connection signal="finished" from="Audio" to="." method="_on_audio_finished"]

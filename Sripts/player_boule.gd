@@ -52,13 +52,21 @@ func _update_label_size():
 func upadate_icone(icone=0)->void:
 	var path_icone
 	if icone == 0:
-		path_icone="res://Asset/flocon.png"
+		path_icone="res://Asset/vache.png"
 	elif  icone == 1:
-		path_icone="res://Asset/icon.svg"
+		path_icone="res://Asset/guitare.png"
 	elif icone == 2:
-		path_icone="res://Asset/noel3.png"
+		path_icone="res://Asset/watermelon.png"
 	elif icone == 3:
-		path_icone=""
+		path_icone="res://Asset/flocon.png"
+	elif icone == 4:
+		path_icone="res://Asset/saxophone.png"
+	elif icone == 5:
+		path_icone="res://Asset/car.png"
+	elif icone == 6:
+		path_icone="res://Asset/trex.png"
+	elif icone == 7:
+		path_icone="res://Asset/kiwi.png"
 	var tex : Texture = load(path_icone)
 	sprite.texture=tex
 	var size=tex.get_size()

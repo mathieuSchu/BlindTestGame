@@ -2,7 +2,7 @@ let ws;
 let clientId;
 let playerName = "";
 let hasAnsweredCurrentQuestion = false;
-const availableAvatars = ['🎵', '🎤', '🎧', '😎', '🎸', '🥁', '🎷', '🎹'];
+const availableAvatars = ['🐮', '🎸', '🍉', '❄️', '🎷', '🏎️', '🦖', '🥝'];
 let currentAvatarIndex = 0;
 
 document.addEventListener("DOMContentLoaded", () => {

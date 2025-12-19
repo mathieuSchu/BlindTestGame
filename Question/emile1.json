@@ -1,13 +1,13 @@
 {
-    "type":"BT",
+    "type":"QCM",
     "questions":[
     {
         "question":{"text":"","image":"","audio":""},
-        "answer":"1"
+        "answer":["A","B","C"]
     },
     {
         "question":{"text":"","image":"","audio":""},
-        "answer":"1"
+        "answer":["A","B","C"]
     } 
 ]
 }

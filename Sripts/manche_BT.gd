@@ -49,7 +49,7 @@ func update_state():
 		State.ANSWER:
 			new_state=State.ANSWER2
 		State.ANSWER2:
-			if count_q == MAX_QUESTION-1:
+			if count_q == MAX_QUESTION-1 or Global.ENDMANCHE==true:
 				new_state=State.RES
 			else:
 				new_state=State.QUESTION
@@ -63,7 +63,6 @@ func update_state():
 #-----------			Fonction 	and triger		 ---------------------------
 #-------------------------------------------------------------------------------
 func _ready() -> void:
-	MAX_QUESTION=Global.nb_question
 	SignalInt.update_size.connect(update_size)
 	SignalInt.signal_answer_q.connect(_recived_answer)
 	update_size()
@@ -83,7 +82,6 @@ func on_enter_question():
 func on_enter_question2():
 	$ProgressBar.visible = true
 	$Btn_next.visible=false
-	var id = list_q[count_q]
 	question.set_image_v(false)
 	nb_answer_recived=0
 	add_answers()
@@ -103,6 +101,7 @@ func on_enter_res():
 	load_res()
 func on_enter_end():
 	print("Manche End")
+	Global.ENDMANCHE=false
 	SignalInt.emite("end_manche",0)
 	
 func load_questions(path_manche)->void:
@@ -116,6 +115,7 @@ func load_questions(path_manche)->void:
 		else:
 			push_error("JSON invalide !")
 	list_q=generate_unique_numbers(questions.questions.size(),questions.questions.size())
+	MAX_QUESTION=min(Global.nb_question,list_q.size()-4)
 func generate_unique_numbers(count: int, max_value: int) -> Array:
 	var numbers = []
 	var pool = []
@@ -182,7 +182,7 @@ func delete_answers()->void:
 func _recived_answer(player_id,answer)->void:
 	nb_answer_recived+=1
 	if answer == good_answer:
-		var point=int((Global.timeout-time.time_left)*1000)
+		var point=int(((Global.timeout-time.time_left)/Global.timeout)*2000.0)+1000
 		Global.list_player[player_id].local_score+=point
 		Global.list_player[player_id].global_score+=point
 	if nb_answer_recived == nb_player:

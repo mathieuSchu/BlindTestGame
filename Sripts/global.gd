@@ -9,3 +9,5 @@ var nb_question : int = 10
 var list_manche : Array
 var list_player : Dictionary
 var curent_manche : int
+var ENDGAME : bool = false
+var ENDMANCHE : bool = false

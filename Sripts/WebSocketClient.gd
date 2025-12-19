@@ -74,11 +74,12 @@ func start_server():
 		print("Unable to start server.")
 		set_process(false)
 		
-func _emit_selection(id)->void:
+		
+func _emit_selection(id,nb_answer)->void:
 	var data : Dictionary
 	data.type = "selection"
 	data.id = id
-	data.numChoices = 3
+	data.numChoices = nb_answer
 	send_massage(data)
 	
 func _emit_global_stat(state)->void:
@@ -97,3 +98,4 @@ func _emit_wait()->void:
 	var data : Dictionary
 	data.type = "wait"
 	send_massage(data)
+	

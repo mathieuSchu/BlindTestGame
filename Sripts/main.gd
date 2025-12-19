@@ -5,6 +5,7 @@ extends Node2D
 @onready var b_start:Button= $"Start-game"
 @onready var bg = $background
 @onready var conf = $Configuration
+@onready var qr :QRCodeRect= $QRCodeRect
 
 
 
@@ -79,7 +80,10 @@ func update_state(id_event):
 		Global.State.CONNECTION_CLIENT:
 			new_state=Global.State.SELECTE
 		Global.State.SELECTE:
-			new_state=Global.State.MANCHE
+			if Global.ENDGAME == true:
+				new_state=Global.State.RESULT
+			else :
+				new_state=Global.State.MANCHE
 		Global.State.MANCHE:
 			if id_event == 0 :
 				new_state=Global.State.SELECTE
@@ -108,13 +112,13 @@ func on_enter_intro()->void:
 	
 func on_enter_config()->void:
 	print(" Main Config")
-	$Configuration.show_list_manche(list_manche)
-	$Configuration.visible=true
+	conf.show_list_manche(list_manche)
+	conf.visible=true
 	
 	
 func on_enter_connection_serve()->void:
-	$Configuration.set_list_manche(list_manche)
-	$Configuration.free()
+	conf.set_list_manche(list_manche)
+	conf.free()
 	print(" Main Connection serve")
 	webSC.start_server()
 	SignalInt.signal_conn.connect(_recived_conn)
@@ -126,6 +130,13 @@ func on_enter_connection_serve()->void:
 	
 func on_enter_connection_client()->void:
 	print(" Main Connection client")
+	var ip := get_local_ip()
+	var url ="%s:3000" % ip
+	var bytes := PackedByteArray() 
+	for c in url.to_ascii_buffer():
+		bytes.append(c)
+	qr.set_data(url)
+	qr.visible=true
 	b_start.visible=true
 	boule_scene.visible=true
 	
@@ -133,6 +144,9 @@ func on_enter_connection_client()->void:
 func on_enter_selecte()->void:
 	if boule_scene:
 		boule_scene.free()
+	if qr:
+		qr.free()
+		
 	b_start.visible = false
 	SignalInt.emite("state",1,"selection")
 	print(" Main Selecte")
@@ -273,5 +287,18 @@ func update_size()->void:
 	if conf:
 		conf.scale=scale
 		conf.position=Vector2(550,389)*scale
+	if qr:
+		qr.scale=scale
+		qr.position=Vector2(911,411)*scale
 	
+func get_local_ip() -> String:
+	for ip in IP.get_local_addresses():
+		if ip.begins_with("192.") or ip.begins_with("10.") or ip.begins_with("172."):
+			return ip
+	return "10.0.0.25"
 	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("end_game"):
+		Global.ENDGAME=true
+	if event.is_action_pressed("end_manche"):
+		Global.ENDMANCHE=true
