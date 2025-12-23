@@ -2,12 +2,56 @@
     "type":"QCM",
     "questions":[
     {
-        "question":{"text":"","image":"","audio":""},
-        "answer":"1"
+        "question":{"text":"Combien de temps dort un chat en moyenne par jour ?","image":"","audio":""},
+        "answer":["12 à 16 heures","8 à 12 heures","10 à 14 heures","6 à 10 heures"]
     },
     {
-        "question":{"text":"","image":"","audio":""},
-        "answer":"1"
-    } 
+        "question":{"text":"Quelle est la vitesse maximale approximative d’un chat en courant ?","image":"","audio":""},
+        "answer":["45 km/h","30 km/h","20 km/h","35 km/h"]
+    },
+    {
+        "question":{"text":"Combin a t'il d'os?","image":"","audio":""},
+        "answer":["250","300","267","200"]
+    },
+    {
+        "question":{"text":"Combien de dents possède un chat adulte ?","image":"","audio":""},
+        "answer":["30","32","28","26"]
+    },
+    {
+        "question":{"text":"Pourquoi les chats ont-ils une langue rugueuse ?","image":"","audio":""},
+        "answer":["Pour retirer les parasites et nettoyer le pelage","Pour mieux miauler","Pour mieux boire","Pour réguler leur température"]
+    },
+    {
+        "question":{"text":"Quel acide aminé est indispensable à l’alimentation du chat ?","image":"","audio":""},
+        "answer":["La taurine","La créatine","La glutamine","La lysine"]
+    },
+    {
+        "question":{"text":"Quel est le chant de vision d'un chat?","image":"","audio":""},
+        "answer":["287°","321°","223°","252°"]
+    },
+    {
+        "question":{"text":"Quel est la plus haut fréquence que peut entendre un chat?","image":"","audio":""},
+        "answer":["50'000 Hz","40'000 H","30'000 H","20'000 Hz"]
+    },
+    {
+        "question":{"text":"Quelle est la durée moyenne de gestation chez la chatte ?","image":"","audio":""},
+        "answer":["65 jours","45 jours","52 jours","75 jours"]
+    },
+    {
+        "question":{"text":"Quelle son le chat n'émet pas?","image":"","audio":""},
+        "answer":["chuintement","miaulement","ronronnement"," feulement"]
+    },
+    {
+        "question":{"text":"Quelle est la race de ce chat ?","image":"chat_cha.jpg","audio":""},
+        "answer":["Chartreux","Burmese","Européen","Persan"]
+    },
+    {
+        "question":{"text":"Quelle est la race de ce chat ?","image":"chat_sia.jpg","audio":""},
+        "answer":["Siamois","Snowshoe","Thaï","Angora Turc"]
+    },
+    {
+        "question":{"text":"Quelle est la race de ce chat ?","image":"chat_nor.jpg","audio":""},
+        "answer":["Norvégien","Bombay","Exotic Shorthair","Pixie-Bob"]
+    }
 ]
 }

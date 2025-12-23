@@ -2,12 +2,28 @@
     "type":"QCM",
     "questions":[
     {
-        "question":{"text":"","image":"","audio":""},
-        "answer":["A","B","C"]
+        "question":{"text":"Qui est le rival amoureux de Gumball ?","image":"","audio":""},
+        "answer":["Tobias","Leslie","Darwin","Alan"]
     },
     {
-        "question":{"text":"","image":"","audio":""},
-        "answer":["A","B","C"]
-    } 
+        "question":{"text":"Parmi ces réponses, laquelle est l'une des activités préférées de Gumball ?","image":"","audio":""},
+        "answer":["Le cinéma","Le golf","Le vandalisme","Le billard"]
+    },
+    {
+        "question":{"text":"Combin y a t'il d'épisode dans la serie Gumball ?","image":"","audio":""},
+        "answer":["240","300","260","280"]
+    },
+    {
+        "question":{"text":"Quelle est la première date de diffusion de Gumball ?","image":"","audio":""},
+        "answer":["3 mai 2011","6 juin 2010","21 arvil 2009","18 septembre 2012"]
+    },
+    {
+        "question":{"text":"Quelle est la voix francaise de Gumball Watterson ?","image":"","audio":""},
+        "answer":["Arthur Dubois","Sacha Capelluto","Robert Guilmard","Tony Beck"]
+    },
+    {
+        "question":{"text":"Quelle est ce personnage ?","image":"Banana_Joe.png","audio":""},
+        "answer":["Joe la banane","Gumball","Darwin","Harold"]
+    }
 ]
 }

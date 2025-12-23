@@ -1,0 +1,77 @@
+{
+    "type":"BT",
+    "questions":[
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"Leparrain.mp3"},
+        "answer":"Le Parrain"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"Star_War.mp3"},
+        "answer":"Star Wars"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"Indiana_Jones.mp3"},
+        "answer":"Indiana Jones"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"James_Bond.mp3"},
+        "answer":"James Bond"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"ET.mp3"},
+        "answer":"E.T."
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"bon.mp3"},
+        "answer":"Le bon, la brute et le truand"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"The_Shining.mp3"},
+        "answer":"The Shining"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"Batman.mp3"},
+        "answer":"Batman"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"Pirates_des_Caraïbes.mp3"},
+        "answer":"Pirates des Caraïbes"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"Sherlock_Holmes.mp3"},
+        "answer":"Sherlock Holmes"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"Dents.mp3"},
+        "answer":"Les Dents De La Mer"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"Avengers.mp3"},
+        "answer":"Avengers"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"gardiens.mp3"},
+        "answer":"Les gardiens de la galaxie"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"fantastiques.mp3"},
+        "answer":"les animaux fantastiques"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"HARRY.mp3"},
+        "answer":"HARRY POTTER"
+    },
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"roi.mp3"},
+        "answer":"Le Roi Lion"
+    } ,
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"Aladdin.mp3"},
+        "answer":"Aladdin"
+    } ,
+    {
+        "question":{"text":"Quel est ce film ?","image":"","audio":"Chateau.mp3"},
+        "answer":"Le Château Ambulant"
+    } 
+]
+}

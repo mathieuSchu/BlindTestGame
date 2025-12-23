@@ -2,12 +2,64 @@
     "type":"QCM",
     "questions":[
     {
-        "question":{"text":"","image":"","audio":""},
-        "answer":"1"
+        "question":{"text":"Quelle est la planète la plus proche du Soleil ?","image":"","audio":""},
+        "answer":["Mercure","Mars","Terre","Saturne"]
     },
     {
-        "question":{"text":"","image":"","audio":""},
-        "answer":"1"
+        "question":{"text":"Quelle est la plus grande planète du Système solaire ?","image":"","audio":""},
+        "answer":["Jupiter","Uranus","Mercure","Neptune"]
+    },
+    {
+        "question":{"text":"Quelle est la plus petite planète du Système solaire ?","image":"","audio":""},
+        "answer":["Mercure","Neptune","Uranus","Pluton"]
+    },
+    {
+        "question":{"text":"Quelle planète possède le plus grand nombre de lunes connues ?","image":"","audio":""},
+        "answer":["Saturne","Mars","Jupiter","Uranus"]
+    },
+    {
+        "question":{"text":"Quelle est la planète la plus chaude du Système solaire ?","image":"","audio":""},
+        "answer":["Vénus","Mercure","Saturne","Jupiter"]
+    },
+    {
+        "question":{"text":"Quelle planète met le plus de temps à faire le tour du Soleil ?","image":"","audio":""},
+        "answer":["Neptune","Jupiter","Vénus","Uranus"]
+    },
+    {
+        "question":{"text":"Quelle planète a la journée (rotation) la plus longue ?","image":"","audio":""},
+        "answer":["Vénus","Terre","Mercure","Mars"]
+    },
+    {
+        "question":{"text":"Quelle planète a la journée (rotation) la plus courte ?","image":"","audio":""},
+        "answer":["Jupiter","Mercure","Saturne","Neptune"]
+    },
+    {
+        "question":{"text":"Quelle planète est la plus dense ?","image":"","audio":""},
+        "answer":["Terre","Mars","Vénus","Neptune"]
+    },
+    {
+        "question":{"text":"Quelle planète possède le champ magnétique le plus puissant du Système solaire ?","image":"","audio":""},
+        "answer":["Jupiter","Neptune","Mercure","Mars"]
+    },
+    {
+        "question":{"text":"Quelle est la différence principal entre une planète naine et une planète?","image":"","audio":""},
+        "answer":["Etre petite","Ne pas avair nétoyer son chemin","Tourner vite","Etre loin du soleil"]
+    },
+    {
+        "question":{"text":"Quelle planète possède la plus grande amplitude de température entre le jour et la nuit ?","image":"","audio":""},
+        "answer":["Mercure","Jupiter","Mars","Saturne"]
+    },
+    {
+        "question":{"text":"Quelle planète a la température moyenne la plus basse ?","image":"","audio":""},
+        "answer":["Uranus","Mercure","Terre","Neptune"]
+    },
+    {
+        "question":{"text":"Quelle planète a le plus grand nombre de volcans connus ?","image":"","audio":""},
+        "answer":["Vénus","Mars","Jupiter","Saturne"]
+    },
+    {
+        "question":{"text":"Quelle planète met le moins de temps à faire le tour du Soleil ?","image":"","audio":""},
+        "answer":["Mercure","Vénus","Neptune","Mars"]
     } 
 ]
 }

@@ -2,12 +2,40 @@
     "type":"QCM",
     "questions":[
     {
-        "question":{"text":"","image":"","audio":""},
-        "answer":["A","B","C"]
+        "question":{"text":"En 2026 l'anniversaire d'éléonore est ...","image":"","audio":""},
+        "answer":["un samedi","un lundi","un mercredi","un jeudi"]
     },
     {
-        "question":{"text":"","image":"","audio":""},
-        "answer":["A","B","C"]
-    } 
+        "question":{"text":"Eléonre posède ...","image":"","audio":""},
+        "answer":["206 os","204 os","208 os","202 os"]
+    },
+    {
+        "question":{"text":"Éléonore respire principalement grâce à ...","image":"","audio":""},
+        "answer":["ses poumons","son cœur","son estomac","ses yeux"]
+    },
+    {
+        "question":{"text":"Éléonore possède combien de sens principaux ?","image":"","audio":""},
+        "answer":["5","3","7","1"]
+    },
+    {
+        "question":{"text":"Le cœur d’Éléonore bat a envion ...","image":"","audio":""},
+        "answer":["60-100 bpm","40-80 bpm","80-120 bpm","10-1000 bpm"]
+    },
+    {
+        "question":{"text":"La température normale du corps d’Éléonore est d’environ ...","image":"","audio":""},
+        "answer":["37°","38°","36°","31°"]
+    },
+    {
+        "question":{"text":"Les globules rouges d’Éléonore contiennent une protéine appelée ...","image":"","audio":""},
+        "answer":["Hémoglobine","Insuline","Adrénaline","Éleonine"]
+    },
+    {
+        "question":{"text":"Lorsqu’Éléonore retire sa main rapidement après une brûlure, ce réflexe est contrôlé principalement par :","image":"","audio":""},
+        "answer":["La moelle épinière","Le cerveau","Les muscles","Elle la retire pas"]
+    },
+    {
+        "question":{"text":"La capacité d’Éléonore à raisonner et à anticiper est principalement liée :","image":"","audio":""},
+        "answer":["Au cortex cérébral","Au cervelet","Au tronc cérébral","Au vide intersidéral"]
+    }
 ]
 }

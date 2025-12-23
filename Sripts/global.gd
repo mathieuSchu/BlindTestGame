@@ -11,3 +11,5 @@ var list_player : Dictionary
 var curent_manche : int
 var ENDGAME : bool = false
 var ENDMANCHE : bool = false
+const BASE_FONT_SIZE = 24
+const BASE_RESOLUTION = Vector2(1152, 648)

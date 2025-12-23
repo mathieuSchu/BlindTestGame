@@ -1,0 +1,69 @@
+{
+    "type":"BT",
+    "questions":[
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"Rhapsody.mp3"},
+        "answer":"Bohemian Rhapsody"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"Billie_Jean.mp3"},
+        "answer":"Billie Jean"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"Yesterday.mp3"},
+        "answer":"Yesterday"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"Dancing_Queen.mp3"},
+        "answer":"Dancing Queen"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"Paint.mp3"},
+        "answer":"Paint It, Black"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"Stayin.mp3"},
+        "answer":"Stayin' Alive"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"Holding.mp3"},
+        "answer":"Holding Out For A Hero"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"Smells.mp3"},
+        "answer":"Smells Like Teen Spirit"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"Back.mp3"},
+        "answer":"Back In Blac"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"Rose.mp3"},
+        "answer":"La Vie En Rose"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"quitte.mp3"},
+        "answer":"Ne me quitte pas"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"lacs.mp3"},
+        "answer":"Les lacs du Connemara"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"aventurier.mp3"},
+        "answer":"L'aventurier"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"Alexandrie.mp3"},
+        "answer":"Alexandrie Alexandra"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"Mistral.mp3"},
+        "answer":"Mistral gagnant"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"corons.mp3"},
+        "answer":"Les corons"
+    }
+]
+}

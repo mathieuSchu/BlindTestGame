@@ -2,12 +2,44 @@
     "type":"QCM",
     "questions":[
     {
-        "question":{"text":"","image":"","audio":""},
-        "answer":["A","B","C"]
+        "question":{"text":"Où est Peaky ?","image":"agra.png","audio":""},
+        "answer":["Agra","Delhi","Mumbai","Jaipur"]
     },
     {
-        "question":{"text":"","image":"","audio":""},
-        "answer":["A","B","C"]
+        "question":{"text":"Où est Peaky ?","image":"chine.png","audio":""},
+        "answer":["Chine","Japon","Suisse :)","Tunisie"]
+    },
+    {
+        "question":{"text":"Où est Peaky ?","image":"japon.png","audio":""},
+        "answer":["Chūbu","Hokkaidō","Kantō","Kansai"]
+    },
+    {
+        "question":{"text":"Où est Peaky ?","image":"londre.png","audio":""},
+        "answer":["Londres","Glasgow","Manchester","Liverpool"]
+    },
+    {
+        "question":{"text":"Où est Peaky ?","image":"new-york.png","audio":""},
+        "answer":["New York","Los Angeles","Chicago","San Francisco"]
+    },
+    {
+        "question":{"text":"Où est Peaky ?","image":"paris.png","audio":""},
+        "answer":["Paris","Marseille","Lyon","Nice"]
+    },
+    {
+        "question":{"text":"Où est Peaky ?","image":"perou.png","audio":""},
+        "answer":["Cuzco","Lima","Arequipa","Puno"]
+    },
+    {
+        "question":{"text":"Où est Peaky ?","image":"rome.png","audio":""},
+        "answer":["Rome","Venise","Turin","Naples"]
+    },
+    {
+        "question":{"text":"Où est Peaky ?","image":"sydney.png","audio":""},
+        "answer":["Sydney","Melbourne","Brisbane","Perth"]
+    },
+    {
+        "question":{"text":"Où est Peaky ?","image":"pyramide_rouge.png","audio":""},
+        "answer":["Dahchour","Saqqarah","Gizeh","Alexandrie"]
     } 
 ]
 }

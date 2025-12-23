@@ -6,6 +6,7 @@ extends Node2D
 @onready var bg = $background
 @onready var conf = $Configuration
 @onready var qr :QRCodeRect= $QRCodeRect
+@onready var intro_m :AudioStreamPlayer =$intro/musique
 
 
 
@@ -38,7 +39,7 @@ var MAX_QUESTIONS
 
 func _ready() -> void:
 	set_state(Global.State.WAIT)
-	
+	update_size()
 
 
 	
@@ -104,13 +105,15 @@ func on_enter_wait()->void:
 	win.size_changed.connect(_on_window_resized)
 	Global.window_size=win.size
 	list_manche =get_json_files(Global.path_queations)
-	#update_state(0)	
+	update_state(0)	
 func on_enter_intro()->void:
 	print(" Main Intro")
-	update_state(0)
+	$intro.visible=true
+	intro_m.play()
 	
 	
 func on_enter_config()->void:
+	$intro.free()
 	print(" Main Config")
 	conf.show_list_manche(list_manche)
 	conf.visible=true
@@ -273,7 +276,11 @@ func start_resulte()->void:
 func update_size()->void:
 	SignalInt.emite("update_size",0)
 	var w_size=Global.window_size
-	var scale=Vector2(w_size.x/1152.0,w_size.y/648.0)
+	var scale=w_size / Global.BASE_RESOLUTION
+	
+	if $intro:
+		$intro.scale=scale
+	
 	bg.scale=scale
 	
 	b_next.scale=scale

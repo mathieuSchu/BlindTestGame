@@ -42,8 +42,7 @@ func update_ranking()->void:
 
 func update_size()->void:
 	var w_size=Global.window_size
-	
-	scale_boule = w_size.x/648
+	scale_boule = w_size.x/648.0
 	
 	
 

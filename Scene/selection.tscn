@@ -7,10 +7,10 @@ script = ExtResource("1_omtta")
 
 [node name="Btn_next" type="Button" parent="."]
 visible = false
-offset_left = 1052.0
-offset_top = 560.0
-offset_right = 1108.0
-offset_bottom = 607.0
+offset_left = 1768.0
+offset_top = 951.0
+offset_right = 1824.0
+offset_bottom = 998.0
 text = "Next"
 
 [connection signal="pressed" from="Btn_next" to="." method="_on_btn_next_pressed"]

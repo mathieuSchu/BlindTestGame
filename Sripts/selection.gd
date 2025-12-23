@@ -41,6 +41,8 @@ func update_state(arg=[]):
 func _ready() -> void:
 	set_state(State.WAIT)
 	SignalInt.signal_answer_s.connect(_recive_selection)
+	SignalInt.update_size.connect(update_size)
+	update_size()
 	
 func on_enter_wait():
 	print("Sel Wait")
@@ -67,6 +69,7 @@ func start_selection()->void:
 	question.set_text(text)
 	var nb_answer=add_answers()
 	SignalInt.emite("selection",2,key,nb_answer)
+	
 func add_answers()->int:
 	var answer_scene=load("res://Scene/Answer_type.tscn")
 	answers = answer_scene.instantiate()
@@ -121,3 +124,10 @@ func _recive_selection(value : int)->void:
 
 func _on_btn_next_pressed() -> void:
 	update_state();
+	
+func update_size()->void :
+	var w_size=Global.window_size
+	var scale=Vector2(w_size.x/1152.0,w_size.y/648.0)
+	$Btn_next.scale=scale
+	$Btn_next.position=Vector2(20,580)*scale
+	

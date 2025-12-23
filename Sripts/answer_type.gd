@@ -12,6 +12,7 @@ extends Node2D
 
 func _ready() -> void:
 	SignalInt.update_size.connect(update_pos)
+	update_pos()
 
 func set_style(ans,type):
 	var style
@@ -31,24 +32,32 @@ func set_style(ans,type):
 		ans_d_l.add_theme_stylebox_override("normal", style) 
 	
 func set_text(ans,text):
+	var score=Global.window_size / Global.BASE_RESOLUTION
 	if ans==0:
 		ans_a_l.text="A : "+text
+		ans_a_l.add_theme_font_size_override("font_size", Global.BASE_FONT_SIZE*score.x)
 	elif ans==1:
 		ans_b_l.text="B : "+text
+		ans_b_l.add_theme_font_size_override("font_size", Global.BASE_FONT_SIZE*score.x)
 	elif ans==2:
 		ans_c_l.text="C : "+text
+		ans_c_l.add_theme_font_size_override("font_size", Global.BASE_FONT_SIZE*score.x)
 	elif ans==3:
 		ans_d_l.text="D : "+text
+		ans_d_l.add_theme_font_size_override("font_size", Global.BASE_FONT_SIZE*score.x)
 func update_pos():
 	var w_size = Global.window_size
 	var a_size = ans_a_l.size
 	var b_size = ans_b_l.size
 	var c_size = ans_c_l.size
 	var d_size = ans_d_l.size
-	var y_up=(w_size.y/20)*5
+	var y_up=(w_size.y/20)*8
 	var y_down=(w_size.y/20)*15
 	var x_left = (w_size.x/4)
 	var x_right= (w_size.x/4)*3
+	var scale=w_size / Global.BASE_RESOLUTION
+	
+	
 	ans_a.position=Vector2(x_left-a_size.x/2,y_up)
 	ans_b.position=Vector2(x_right-b_size.x/2,y_up)
 	ans_c.position=Vector2(x_left-c_size.x/2,y_down)

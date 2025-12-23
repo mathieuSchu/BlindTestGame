@@ -1,0 +1,65 @@
+{
+    "type":"BT",
+    "questions":[
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":"OneMoreTime.mp3"},
+        "answer":"One More Time"
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    },
+    {
+        "question":{"text":"Quelle est cette musique ?","image":"","audio":""},
+        "answer":""
+    }
+]
+}

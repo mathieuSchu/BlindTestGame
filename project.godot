@@ -26,6 +26,10 @@ config/icon="res://Asset/icon.svg"
 Global="*res://Sripts/global.gd"
 SignalInt="*res://Sripts/signal_int.gd"
 
+[display]
+
+window/size/initial_position_type=4
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/ambientcg/plugin.cfg", "res://addons/kenyoni/pot_generation/plugin.cfg", "res://addons/qr_code/plugin.cfg")

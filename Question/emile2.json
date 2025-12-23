@@ -2,12 +2,64 @@
     "type":"QCM",
     "questions":[
     {
-        "question":{"text":"","image":"","audio":""},
-        "answer":["A","B","C"]
+        "question":{"text":"De quand date cette photo ?","image":"famille1.jpg","audio":""},
+        "answer":["2025","2019","2023","2024"]
     },
     {
-        "question":{"text":"","image":"","audio":""},
-        "answer":["A","B","C"]
-    } 
+        "question":{"text":"De quand date cette photo ?","image":"famille2.jpg","audio":""},
+        "answer":["08.2025","09.2025","10.2025","07.2025"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille3.jpg","audio":""},
+        "answer":["2021","2019","2023","2022"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille4.jpg","audio":""},
+        "answer":["2021","2019","2023","2022"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille5.jpg","audio":""},
+        "answer":["2022","2024","2023","2021"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille6.jpg","audio":""},
+        "answer":["2023","2022","2021","2020"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille7.jpg","audio":""},
+        "answer":["2023","2024","2022","2021"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille8.jpg","audio":""},
+        "answer":["2024","2025","2023","2022"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille9.jpg","audio":""},
+        "answer":["08.2025","09.2025","10.2025","07.2025"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille10.jpg","audio":""},
+        "answer":["2024","2025","2022","2019"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille11.jpg","audio":""},
+        "answer":["2023","2024","2021","2019"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille12.jpg","audio":""},
+        "answer":["2022","2024","2019","2020"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille13.jpg","audio":""},
+        "answer":["2021","2019","2022","2024"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille14.jpg","audio":""},
+        "answer":["2024","2023","2022","2021"]
+    },
+    {
+        "question":{"text":"De quand date cette photo ?","image":"famille15.jpg","audio":""},
+        "answer":["2021","2024","2023","2022"]
+    }
 ]
 }
